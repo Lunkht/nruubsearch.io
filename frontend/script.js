@@ -23,6 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialiser le thème au chargement
     initializeTheme();
 
+    // Fonction pour basculer le menu des paramètres
+    window.toggleSettingsMenu = () => {
+        const menu = document.getElementById('settings-menu');
+        menu.classList.toggle('show');
+    };
+
+    // Fermer le menu si on clique ailleurs
+    document.addEventListener('click', (event) => {
+        const menu = document.getElementById('settings-menu');
+        const button = document.querySelector('.settings-button');
+        
+        if (menu && !menu.contains(event.target) && !button.contains(event.target)) {
+            menu.classList.remove('show');
+        }
+    });
+
     const performSearch = async () => {
         const query = searchInput.value.trim();
         if (query) {

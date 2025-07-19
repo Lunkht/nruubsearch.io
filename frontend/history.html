@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - nruub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-button">&larr; Retour</a>
+            <h1>Historique de recherche</h1>
+        </header>
+        <main>
+            <section class="setting-section">
+                <div class="history-header">
+                    <h2>Vos recherches récentes</h2>
+                    <button id="clear-history-button" class="clear-btn">Effacer tout l'historique</button>
+                </div>
+                
+                <div class="search-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-searches">0</span>
+                        <span class="stat-label">Recherches totales</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="unique-terms">0</span>
+                        <span class="stat-label">Termes uniques</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="today-searches">0</span>
+                        <span class="stat-label">Aujourd'hui</span>
+                    </div>
+                </div>
+                
+                <div class="history-filters">
+                    <input type="text" id="search-filter" placeholder="Filtrer l'historique...">
+                    <select id="date-filter">
+                        <option value="all">Toutes les dates</option>
+                        <option value="today">Aujourd'hui</option>
+                        <option value="week">Cette semaine</option>
+                        <option value="month">Ce mois</option>
+                    </select>
+                </div>
+                
+                <ul id="search-history-list" class="history-list">
+                    <!-- L'historique sera chargé ici par JavaScript -->
+                </ul>
+                
+                <div id="no-history" class="no-history" style="display: none;">
+                    <p>Aucun historique de recherche trouvé.</p>
+                    <p>Vos recherches apparaîtront ici automatiquement.</p>
+                </div>
+            </section>
+
+            <section class="setting-section">
+                <h2>Paramètres de l'historique</h2>
+                <div class="history-settings">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="save-history" checked>
+                        <span class="checkmark"></span>
+                        Sauvegarder l'historique de recherche
+                    </label>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="auto-suggestions" checked>
+                        <span class="checkmark"></span>
+                        Afficher les suggestions basées sur l'historique
+                    </label>
+                </div>
+                
+                <p class="setting-description">
+                    L'historique est stocké localement sur votre appareil et n'est pas partagé.
+                </p>
+            </section>
+        </main>
+    </div>
+    <script src="history.js"></script>
+</body>
+</html>

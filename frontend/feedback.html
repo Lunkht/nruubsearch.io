@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commentaires - nruub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-button">&larr; Retour</a>
+            <h1>Envoyer un commentaire</h1>
+        </header>
+        <main>
+            <section class="setting-section">
+                <h2>Votre avis nous intéresse</h2>
+                <p class="setting-description">
+                    Aidez-nous à améliorer nruub en partageant vos commentaires, suggestions ou en signalant des problèmes.
+                </p>
+                
+                <form id="comment-form">
+                    <div class="form-group">
+                        <label for="feedback-type">Type de commentaire :</label>
+                        <select id="feedback-type" required>
+                            <option value="">Sélectionnez un type</option>
+                            <option value="suggestion">Suggestion d'amélioration</option>
+                            <option value="bug">Signaler un problème</option>
+                            <option value="feature">Demande de fonctionnalité</option>
+                            <option value="general">Commentaire général</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment-text">Votre message :</label>
+                        <textarea id="comment-text" placeholder="Décrivez votre commentaire en détail..." rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-email">Email (optionnel) :</label>
+                        <input type="email" id="user-email" placeholder="votre@email.com">
+                        <small>Pour vous recontacter si nécessaire</small>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Envoyer le commentaire</button>
+                </form>
+                
+                <div id="comment-status" class="status-message"></div>
+            </section>
+
+            <section class="setting-section">
+                <h2>Autres moyens de contact</h2>
+                <div class="contact-info">
+                    <p><strong>Email :</strong> support@nruub.com</p>
+                    <p><strong>GitHub :</strong> <a href="#" target="_blank">Signaler un problème</a></p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="feedback.js"></script>
+</body>
+</html>

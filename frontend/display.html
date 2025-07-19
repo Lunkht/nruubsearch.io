@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mode d'affichage - nruub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-button">&larr; Retour</a>
+            <h1>Mode d'affichage</h1>
+        </header>
+        <main>
+            <section class="setting-section">
+                <h2>Thème</h2>
+                <div class="toggle-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="mode-label">Mode Clair</span>
+                </div>
+                <p class="setting-description">
+                    Basculez entre le mode sombre et le mode clair selon vos préférences. 
+                    Votre choix sera sauvegardé automatiquement.
+                </p>
+            </section>
+
+            <section class="setting-section">
+                <h2>Taille du texte</h2>
+                <div class="font-size-controls">
+                    <button class="font-btn" onclick="changeFontSize('small')">Petit</button>
+                    <button class="font-btn active" onclick="changeFontSize('medium')">Moyen</button>
+                    <button class="font-btn" onclick="changeFontSize('large')">Grand</button>
+                </div>
+                <p class="setting-description">
+                    Ajustez la taille du texte pour améliorer votre confort de lecture.
+                </p>
+            </section>
+        </main>
+    </div>
+    <script src="display.js"></script>
+</body>
+</html>

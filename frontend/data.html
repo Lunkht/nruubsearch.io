@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Données - nruub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="../index.html" class="back-button">&larr; Retour</a>
+            <h1>Vos données de recherche</h1>
+        </header>
+        <main>
+            <section class="setting-section">
+                <h2>Aperçu de vos données</h2>
+                <div class="data-overview">
+                    <div class="data-card">
+                        <h3>Stockage local</h3>
+                        <div class="storage-info">
+                            <div class="storage-item">
+                                <span class="storage-label">Historique de recherche :</span>
+                                <span class="storage-value" id="history-size">0 KB</span>
+                            </div>
+                            <div class="storage-item">
+                                <span class="storage-label">Préférences :</span>
+                                <span class="storage-value" id="preferences-size">0 KB</span>
+                            </div>
+                            <div class="storage-item">
+                                <span class="storage-label">Commentaires :</span>
+                                <span class="storage-value" id="feedback-size">0 KB</span>
+                            </div>
+                            <div class="storage-item total">
+                                <span class="storage-label">Total utilisé :</span>
+                                <span class="storage-value" id="total-size">0 KB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-card">
+                        <h3>Statistiques d'utilisation</h3>
+                        <div class="usage-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">Première utilisation :</span>
+                                <span class="stat-value" id="first-use">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Dernière recherche :</span>
+                                <span class="stat-value" id="last-search">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Terme le plus recherché :</span>
+                                <span class="stat-value" id="top-term">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">Moyenne par jour :</span>
+                                <span class="stat-value" id="daily-average">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="setting-section">
+                <h2>Gestion des données</h2>
+                <div class="data-actions">
+                    <div class="action-group">
+                        <h3>Exporter vos données</h3>
+                        <p>Téléchargez une copie de toutes vos données stockées localement.</p>
+                        <button id="export-data" class="action-btn primary">Exporter les données</button>
+                    </div>
+                    
+                    <div class="action-group">
+                        <h3>Importer des données</h3>
+                        <p>Restaurez vos données à partir d'un fichier d'exportation précédent.</p>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                        <button id="import-data" class="action-btn secondary">Importer des données</button>
+                    </div>
+                    
+                    <div class="action-group danger">
+                        <h3>Supprimer toutes les données</h3>
+                        <p>Effacez définitivement toutes vos données stockées localement.</p>
+                        <button id="clear-all-data" class="action-btn danger">Tout supprimer</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="setting-section">
+                <h2>Confidentialité</h2>
+                <div class="privacy-info">
+                    <div class="privacy-item">
+                        <h4>🔒 Stockage local uniquement</h4>
+                        <p>Toutes vos données sont stockées localement sur votre appareil. Aucune information n'est envoyée à nos serveurs.</p>
+                    </div>
+                    
+                    <div class="privacy-item">
+                        <h4>🚫 Aucun tracking</h4>
+                        <p>Nous ne collectons aucune donnée analytique ou de suivi. Votre vie privée est respectée.</p>
+                    </div>
+                    
+                    <div class="privacy-item">
+                        <h4>🗑️ Contrôle total</h4>
+                        <p>Vous pouvez supprimer vos données à tout moment depuis cette page.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="data.js"></script>
+</body>
+</html>
