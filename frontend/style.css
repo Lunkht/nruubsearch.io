@@ -8,6 +8,62 @@ body {
     align-items: center;
     min-height: 100vh;
     flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+/* Mode clair */
+body.light-mode {
+    background-color: #ffffff;
+}
+
+body.light-mode .logo {
+    filter: none;
+}
+
+body.light-mode h1 {
+    color: #333;
+}
+
+body.light-mode #search-input {
+    background-color: #f8f9fa;
+    color: #333;
+    border-color: #dee2e6;
+}
+
+body.light-mode #search-input::placeholder {
+    color: #6c757d;
+}
+
+body.light-mode #search-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+body.light-mode #results-list li {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+body.light-mode #results-list li:hover {
+    background-color: #e9ecef;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #results-list li a {
+    color: #007bff;
+}
+
+body.light-mode #results-list li p {
+    color: #6c757d;
+}
+
+body.light-mode .settings-button {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+}
+
+body.light-mode .settings-button:hover {
+    background-color: #e9ecef;
 }
 
 .container {
@@ -142,15 +198,28 @@ h1 {
 .settings-button {
     background-color: #3498db;
     color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 50%;
     text-decoration: none;
     font-size: 16px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: none;
 }
 
 .settings-button:hover {
     background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.settings-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
 }
 
 /* Settings Page Specific Styles */
