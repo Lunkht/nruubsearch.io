@@ -5,9 +5,10 @@ body {
     background-color: #0d1519;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
     flex-direction: column;
+    padding-top: 80px;
     transition: background-color 0.3s ease;
 }
 
@@ -58,12 +59,14 @@ body.light-mode #results-list li p {
 }
 
 body.light-mode .settings-button {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
+    border-color: #bdc3c7;
+    color: #2c3e50;
 }
 
 body.light-mode .settings-button:hover {
-    background-color: #e9ecef;
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: #3498db;
+    color: #3498db;
 }
 
 .container {
@@ -190,35 +193,49 @@ h1 {
 }
 
 .settings-link-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
 .settings-button {
-    background-color: #3498db;
-    color: white;
-    padding: 12px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
-    text-decoration: none;
-    font-size: 16px;
-    transition: all 0.3s ease;
+    background-color: transparent;
+    border: 2px solid #34495e;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    border: none;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 16px;
+    color: #ecf0f1;
+}
+
+body.light-mode .settings-button {
+    border-color: #bdc3c7;
+    color: #2c3e50;
 }
 
 .settings-button:hover {
-    background-color: #2980b9;
+    background-color: rgba(52, 73, 94, 0.1);
     transform: scale(1.05);
+    border-color: #3498db;
+    color: #3498db;
+}
+
+body.light-mode .settings-button:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+    border-color: #3498db;
+    color: #3498db;
 }
 
 .settings-icon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     fill: currentColor;
 }
 
@@ -230,10 +247,10 @@ h1 {
 .settings-menu {
     display: none;
     position: absolute;
-    bottom: 60px;
+    top: 45px;
     right: 0;
     background-color: #2c3e50;
-    min-width: 200px;
+    min-width: 180px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     z-index: 1000;
