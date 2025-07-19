@@ -6,7 +6,8 @@ import os
 
 app = FastAPI()
 
-# Serve static files (HTML, CSS, JS) from the frontend directory
+# Serve static files
+app.mount("/assets", StaticFiles(directory="../assets"), name="assets")
 app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 # Load the inverted index and document metadata
