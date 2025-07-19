@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - nruub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-button">&larr; Retour</a>
+            <h1>Paramètres</h1>
+        </header>
+        <main>
+            <section class="setting-section">
+                <h2>Mode d'affichage</h2>
+                <div class="toggle-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="mode-label">Mode Clair</span>
+                </div>
+            </section>
+
+            <section class="setting-section">
+                <h2>Envoyer un commentaire</h2>
+                <form id="comment-form">
+                    <textarea id="comment-text" placeholder="Votre commentaire..." rows="5" required></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+                <p id="comment-status"></p>
+            </section>
+
+            <section class="setting-section">
+                <h2>Historique de recherche</h2>
+                <ul id="search-history-list">
+                    <!-- Search history will be loaded here by JavaScript -->
+                </ul>
+                <button id="clear-history-button">Effacer l'historique</button>
+            </section>
+
+            <section class="setting-section">
+                <h2>Vos données de recherche</h2>
+                <p>Cette section pourrait afficher des informations agrégées sur vos recherches, telles que les termes les plus fréquents ou le nombre total de recherches. Pour l'instant, aucune donnée n'est collectée ou stockée côté serveur. L'historique de recherche est géré localement dans votre navigateur.</p>
+            </section>
+
+            <section class="setting-section">
+                <h2>À propos</h2>
+                <p>nruub est un moteur de recherche simple développé pour démontrer les capacités de recherche et d'indexation. Il est conçu pour être léger et facile à utiliser.</p>
+                <p>Version: 1.0.0</p>
+                <p>Développé par: Gemini CLI</p>
+            </section>
+        </main>
+    </div>
+    <script src="settings.js"></script>
+</body>
+</html>

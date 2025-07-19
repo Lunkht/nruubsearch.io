@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(`/search?q=${encodeURIComponent(query)}`);
                 const results = await response.json();
                 displayResults(results);
+                if (window.saveSearchQuery) {
+                    window.saveSearchQuery(query);
+                }
             } catch (error) {
                 console.error('Error fetching search results:', error);
                 resultsList.innerHTML = '<li>Une erreur est survenue lors de la recherche.</li>';
