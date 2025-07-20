@@ -193,25 +193,25 @@ h1 {
 }
 
 .settings-link-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
     z-index: 1000;
 }
 
 .settings-button {
-    width: 35px;
-    height: 35px;
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     background-color: transparent;
-    border: 2px solid #34495e;
+    border: 1px solid #34495e;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 12px;
     color: #ecf0f1;
 }
 
@@ -234,21 +234,16 @@ body.light-mode .settings-button:hover {
 }
 
 .settings-icon {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     fill: currentColor;
-}
-
-.settings-link-container {
-    position: relative;
-    display: inline-block;
 }
 
 .settings-menu {
     display: none;
     position: absolute;
-    top: 45px;
-    right: 0;
+    bottom: 30px;
+    left: 0;
     background-color: #2c3e50;
     min-width: 180px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
