@@ -478,7 +478,7 @@ body.light-mode #results-list li:hover {
 
 .settings-link-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 50px;
     left: 20px;
     z-index: 1000;
 }
