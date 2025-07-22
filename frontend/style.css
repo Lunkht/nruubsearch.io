@@ -221,7 +221,7 @@ body.light-mode .suggestion-item.highlighted {
 
 #search-input {
     width: 100%;
-    padding: 15px 60px 15px 20px;
+    padding: 15px 105px 15px 20px;
     border: 2px solid #34495e;
     border-radius: 50px;
     font-size: 16px;
@@ -478,7 +478,7 @@ body.light-mode #results-list li:hover {
 
 .settings-link-container {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     left: 20px;
     z-index: 1000;
 }
@@ -1156,6 +1156,10 @@ body.font-large h3 { font-size: 24px; }
 
 /* Responsive design pour les nouvelles pages */
 @media (max-width: 768px) {
+    .search-bar {
+        width: 100%;
+    }
+
     .data-overview {
         grid-template-columns: 1fr;
     }
