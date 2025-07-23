@@ -35,19 +35,16 @@ body.light-mode #search-input::placeholder {
 }
 
 body.light-mode #search-input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    border-color: #2d3339;
 }
 
 body.light-mode #results-list li {
     background-color: #f8f9fa;
     border-color: #dee2e6;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 body.light-mode #results-list li:hover {
     background-color: #e9ecef;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 body.light-mode #results-list li a {
@@ -163,20 +160,20 @@ body.light-mode .suggestion-item {
 
 .suggestion-item:hover,
 .suggestion-item.highlighted {
-    background-color: #3498db;
+    background-color: #242a2e;
     color: white;
     padding-left: 20px;
     transform: translateX(4px);
 }
 
 .suggestion-item.highlighted {
-    background: linear-gradient(90deg, #3498db, transparent);
-    border-left: 3px solid #3498db;
+    background: linear-gradient(90deg, #232526, transparent);
+    border-left: 3px solid #262b2e;
 }
 
 body.light-mode .suggestion-item:hover,
 body.light-mode .suggestion-item.highlighted {
-    background-color: #3498db;
+    background-color: #26282a;
     color: white;
 }
 
@@ -185,7 +182,7 @@ body.light-mode .suggestion-item.highlighted {
     width: 20px;
     height: 20px;
     border: 3px solid #f3f3f3;
-    border-top: 3px solid #3498db;
+    border-top: 3px solid #232424;
     border-right: 3px solid #e74c3c;
     border-radius: 50%;
     animation: spin 1s ease-in-out infinite;
@@ -214,7 +211,7 @@ body.light-mode .suggestion-item.highlighted {
     }
     100% {
         transform: rotate(360deg);
-        border-top-color: #3498db;
+        border-top-color: #24282a;
         border-right-color: #e74c3c;
     }
 }
@@ -295,8 +292,8 @@ body.light-mode .suggestion-item.highlighted {
 }
 
 .filters-toggle:hover {
-    background-color: #3498db;
-    border-color: #3498db;
+    background-color: #1e1f20;
+    border-color: #353536;
     transform: translateY(-50%) scale(1.05);
 }
 
@@ -314,7 +311,7 @@ body.light-mode .filters-toggle {
 body.light-mode .filters-toggle:hover {
     background-color: #3498db;
     color: white;
-    border-color: #3498db;
+    border-color: #222324;
 }
 
 .filters-panel {
@@ -371,7 +368,7 @@ body.light-mode .filter-group label {
 
 .filter-group select:focus {
     outline: none;
-    border-color: #3498db;
+    border-color: #18191a;
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
 }
 
@@ -382,14 +379,14 @@ body.light-mode .filter-group select {
 }
 
 body.light-mode .filter-group select:focus {
-    border-color: #3498db;
+    border-color: #2a2b2d;
     box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
 }
 
 .apply-filters-btn {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(135deg, #222324, #273035);
     color: white;
     border: none;
     border-radius: 8px;
@@ -401,9 +398,8 @@ body.light-mode .filter-group select:focus {
 }
 
 .apply-filters-btn:hover {
-    background: linear-gradient(135deg, #2980b9, #1f5f8b);
+    background: linear-gradient(135deg, #1c1c1d, #2a2f33);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
 .apply-filters-btn:active {
@@ -448,8 +444,8 @@ body.light-mode .filter-group select:focus {
 #results-list li:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 6px 20px rgba(52, 152, 219, 0.2);
-    border-color: #3498db;
-    background: linear-gradient(135deg, #34495e, #3c5a78);
+    border-color: #1c1d1d;
+    background: linear-gradient(135deg, #21272d, #202429);
 }
 
 body.light-mode #results-list li:hover {
