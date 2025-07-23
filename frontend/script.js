@@ -49,6 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Configuration de l'URL de l'API
+    const getApiUrl = () => {
+        // En production sur Vercel, utiliser l'URL relative
+        if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+            return '/api';
+        }
+        // En développement local
+        return 'http://localhost:8002/api';
+    };
+
     const performSearch = async (query = null) => {
         const searchQuery = query || searchInput.value.trim();
         if (searchQuery) {
@@ -60,13 +70,19 @@ document.addEventListener('DOMContentLoaded', () => {
             currentQuery = searchQuery;
             
             try {
-                const response = await fetch(`http://localhost:8002/search?q=${encodeURIComponent(searchQuery)}`);
+                const apiUrl = getApiUrl();
+                const response = await fetch(`${apiUrl}/search?q=${encodeURIComponent(searchQuery)}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const results = await response.json();
                 currentResults = results;
                 applyFiltersAndDisplay();
             } catch (error) {
                 console.error('Error fetching search results:', error);
-                resultsList.innerHTML = '<li>❌ Une erreur est survenue lors de la recherche. Vérifiez que le serveur backend est démarré.</li>';
+                resultsList.innerHTML = '<li>❌ Une erreur est survenue lors de la recherche. Vérifiez la connexion au serveur.</li>';
             }
         } else {
             resultsList.innerHTML = '';

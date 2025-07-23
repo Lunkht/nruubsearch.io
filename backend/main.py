@@ -1,10 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 
 app = FastAPI()
+
+# Configuration CORS pour permettre les requêtes depuis le frontend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # En production, spécifier les domaines autorisés
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Serve static files
 app.mount("/assets", StaticFiles(directory="../assets"), name="assets")
@@ -24,7 +34,7 @@ if os.path.exists(INDEX_FILE):
 else:
     print(f"Warning: {INDEX_FILE} not found. Please run indexer.py first.")
 
-@app.get("/search")
+@app.get("/api/search")
 async def search(q: str):
     query_words = q.lower().split()
     
@@ -55,7 +65,7 @@ async def search(q: str):
     
     return results
 
-@app.get("/health")
+@app.get("/api/health")
 async def health_check():
     return {"status": "ok", "index_loaded": bool(inverted_index)}
 
