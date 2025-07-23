@@ -486,7 +486,7 @@ body.light-mode #results-list li:hover {
     background-color: transparent;
     border: 1px solid #34495e;
     cursor: pointer;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
