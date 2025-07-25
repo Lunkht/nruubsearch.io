@@ -16,12 +16,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Serve static files
-app.mount("/assets", StaticFiles(directory="../assets"), name="assets")
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
-
 # Load the inverted index and document metadata
-INDEX_FILE = "index.json"
+INDEX_FILE = os.path.join(os.path.dirname(__file__), "index.json")
 inverted_index = {}
 documents = {}
 
