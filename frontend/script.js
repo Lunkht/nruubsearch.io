@@ -56,14 +56,19 @@ document.addEventListener('DOMContentLoaded', () => {
             return '/api';
         }
         // En développement local
-        return 'http://localhost:8002/api';
+        return 'http://localhost:5000/api';
     };
 
     const performSearch = async (query = null) => {
         const searchQuery = query || searchInput.value.trim();
         if (searchQuery) {
             hideSuggestions();
-            resultsList.innerHTML = '<li><span class="loading-spinner"></span>Recherche en cours...</li>';
+            
+            // Afficher le spinner dans le bouton
+            if (searchButton) {
+                searchButton.innerHTML = '<div class="loading-spinner"></div>';
+                searchButton.disabled = true;
+            }
             
             // Ajouter à l'historique
             addToSearchHistory(searchQuery);
@@ -82,7 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyFiltersAndDisplay();
             } catch (error) {
                 console.error('Error fetching search results:', error);
-                resultsList.innerHTML = '<li>❌ Une erreur est survenue lors de la recherche. Vérifiez la connexion au serveur.</li>';
+                resultsList.innerHTML = '<li style="color: #e74c3c; text-align: center; padding: 20px; background: rgba(231, 76, 60, 0.1); border-radius: 12px; margin: 20px 0;">❌ Erreur lors de la recherche. Veuillez réessayer.</li>';
+            } finally {
+                // Restaurer le bouton
+                if (searchButton) {
+                    searchButton.innerHTML = '🔍';
+                    searchButton.disabled = false;
+                }
             }
         } else {
             resultsList.innerHTML = '';
@@ -229,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const displayResults = (results, query) => {
         resultsList.innerHTML = '';
         if (results.length === 0) {
-            resultsList.innerHTML = `<li>🔍 Aucun résultat trouvé pour "${query}".</li>`;
+            resultsList.innerHTML = `<li style="text-align: center; color: rgba(255,255,255,0.7); padding: 40px; background: rgba(255,255,255,0.1); border-radius: 16px; margin: 20px 0;">🔍 Aucun résultat trouvé pour "${query}".</li>`;
             return;
         }
 
@@ -244,15 +255,18 @@ document.addEventListener('DOMContentLoaded', () => {
         results.forEach((result, index) => {
             const listItem = document.createElement('li');
             listItem.style.animationDelay = `${index * 0.1}s`;
+            listItem.style.opacity = '0';
+            listItem.style.transform = 'translateY(20px)';
             listItem.classList.add('result-item-animated');
             
             const link = document.createElement('a');
             link.href = result.url;
             link.textContent = result.title || 'Document sans titre';
             link.target = "_blank";
+            link.rel = "noopener noreferrer";
 
             const description = document.createElement('p');
-            description.textContent = `📄 ${result.url}`;
+            description.textContent = result.description || `📄 ${result.url}`;
             
             // Ajouter un indicateur de pertinence (simulé)
             const relevanceScore = document.createElement('span');
@@ -265,6 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
             listItem.appendChild(relevanceScore);
             listItem.appendChild(description);
             resultsList.appendChild(listItem);
+            
+            // Animation d'apparition
+            setTimeout(() => {
+                listItem.style.opacity = '1';
+                listItem.style.transform = 'translateY(0)';
+            }, index * 100);
         });
     };
 
