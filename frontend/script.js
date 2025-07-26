@@ -273,81 +273,88 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Gestionnaires d'événements améliorés
-    searchButton.addEventListener('click', () => performSearch());
+    if (searchButton) searchButton.addEventListener('click', () => performSearch());
     
-    searchInput.addEventListener('input', (event) => {
-        const query = event.target.value.trim();
-        
-        // Débounce pour éviter trop de requêtes
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            if (query.length > 0) {
-                const suggestions = getSuggestions(query);
-                showSuggestions(suggestions);
-            } else {
-                hideSuggestions();
-            }
-        }, 300);
-    });
-    
-    searchInput.addEventListener('keydown', (event) => {
-        const suggestionsVisible = suggestionsContainer.style.display === 'block';
-        
-        switch (event.key) {
-            case 'Enter':
-                event.preventDefault();
-                if (suggestionsVisible && currentSuggestionIndex >= 0) {
-                    const selectedSuggestion = suggestionsContainer.querySelectorAll('.suggestion-item')[currentSuggestionIndex].textContent;
-                    searchInput.value = selectedSuggestion;
-                    performSearch(selectedSuggestion);
+    if (searchInput) {
+        searchInput.addEventListener('input', (event) => {
+            const query = event.target.value.trim();
+            
+            // Débounce pour éviter trop de requêtes
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                if (query.length > 0) {
+                    const suggestions = getSuggestions(query);
+                    showSuggestions(suggestions);
                 } else {
-                    performSearch();
+                    hideSuggestions();
                 }
-                break;
-            case 'ArrowDown':
-                if (suggestionsVisible) {
+            }, 300);
+        });
+        
+        searchInput.addEventListener('keydown', (event) => {
+            const suggestionsVisible = suggestionsContainer.style.display === 'block';
+            
+            switch (event.key) {
+                case 'Enter':
                     event.preventDefault();
-                    navigateSuggestions('down');
-                }
-                break;
-            case 'ArrowUp':
-                if (suggestionsVisible) {
-                    event.preventDefault();
-                    navigateSuggestions('up');
-                }
-                break;
-            case 'Escape':
-                hideSuggestions();
-                break;
-        }
-    });
+                    if (suggestionsVisible && currentSuggestionIndex >= 0) {
+                        const selectedSuggestion = suggestionsContainer.querySelectorAll('.suggestion-item')[currentSuggestionIndex].textContent;
+                        searchInput.value = selectedSuggestion;
+                        performSearch(selectedSuggestion);
+                    } else {
+                        performSearch();
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (suggestionsVisible) {
+                        event.preventDefault();
+                        navigateSuggestions('down');
+                    }
+                    break;
+                case 'ArrowUp':
+                    if (suggestionsVisible) {
+                        event.preventDefault();
+                        navigateSuggestions('up');
+                    }
+                    break;
+                case 'Escape':
+                    hideSuggestions();
+                    break;
+            }
+        });
+        
+        // Focus automatique sur le champ de recherche
+        searchInput.focus();
+    }
     
     // Gestionnaires d'événements pour les filtres
-    filtersToggle.addEventListener('click', toggleFilters);
-    applyFiltersBtn.addEventListener('click', applyFiltersAndDisplay);
+    if (filtersToggle) filtersToggle.addEventListener('click', toggleFilters);
+    if (applyFiltersBtn) applyFiltersBtn.addEventListener('click', applyFiltersAndDisplay);
     
     // Appliquer les filtres automatiquement quand on change les sélections
-    const contentTypeFilter = document.getElementById('content-type');
-    const timeFilter = document.getElementById('time-filter');
-    const resultsCount = document.getElementById('results-count');
-    
-    if (contentTypeFilter) contentTypeFilter.addEventListener('change', applyFiltersAndDisplay);
-    if (timeFilter) timeFilter.addEventListener('change', applyFiltersAndDisplay);
-    if (resultsCount) resultsCount.addEventListener('change', applyFiltersAndDisplay);
+    // Attendre un peu pour s'assurer que tous les éléments sont chargés
+    setTimeout(() => {
+        const contentTypeFilter = document.getElementById('content-type');
+        const timeFilter = document.getElementById('time-filter');
+        const resultsCount = document.getElementById('results-count');
+        
+        if (contentTypeFilter) contentTypeFilter.addEventListener('change', applyFiltersAndDisplay);
+        if (timeFilter) timeFilter.addEventListener('change', applyFiltersAndDisplay);
+        if (resultsCount) resultsCount.addEventListener('change', applyFiltersAndDisplay);
+    }, 100);
     
     // Fermer les suggestions en cliquant ailleurs
     document.addEventListener('click', (event) => {
-        if (!searchInput.contains(event.target) && !suggestionsContainer.contains(event.target)) {
+        if (searchInput && suggestionsContainer && 
+            !searchInput.contains(event.target) && !suggestionsContainer.contains(event.target)) {
             hideSuggestions();
         }
         
         // Fermer les filtres si on clique ailleurs
-        if (!filtersPanel.contains(event.target) && !filtersToggle.contains(event.target)) {
+        if (filtersPanel && filtersToggle && 
+            !filtersPanel.contains(event.target) && !filtersToggle.contains(event.target)) {
             filtersPanel.classList.remove('show');
             filtersToggle.classList.remove('active');
         }
     });
-    
-    // Focus automatique sur le champ de recherche
-    searchInput.focus();
 });
