@@ -116,15 +116,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let filteredResults = [...currentResults];
         
         // Filtrer par type de contenu
-        const contentType = document.getElementById('content-type-filter').value;
-        if (contentType !== 'all') {
+        const contentTypeElement = document.getElementById('content-type');
+        const contentType = contentTypeElement ? contentTypeElement.value : '';
+        if (contentType && contentType !== '') {
             filteredResults = filteredResults.filter(result => {
                 const url = result.url.toLowerCase();
                 switch (contentType) {
-                    case 'html':
+                    case 'web':
                         return url.includes('.html') || url.includes('.htm');
-                    case 'text':
-                        return url.includes('.txt') || url.includes('.md');
+                    case 'pdf':
+                        return url.includes('.pdf');
                     case 'code':
                         return url.includes('.js') || url.includes('.py') || url.includes('.css') || url.includes('.json');
                     default:
@@ -133,26 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         
-        // Trier les résultats
-        const sortBy = document.getElementById('sort-filter').value;
-        switch (sortBy) {
-            case 'title':
-                filteredResults.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
-                break;
-            case 'url':
-                filteredResults.sort((a, b) => a.url.localeCompare(b.url));
-                break;
-            case 'random':
-                filteredResults = filteredResults.sort(() => Math.random() - 0.5);
-                break;
-            case 'relevance':
-            default:
-                // Garder l'ordre original (pertinence)
-                break;
-        }
-        
         // Limiter le nombre de résultats
-        const limit = parseInt(document.getElementById('results-limit').value);
+        const resultsCountElement = document.getElementById('results-count');
+        const limit = resultsCountElement ? parseInt(resultsCountElement.value) : 25;
         if (limit !== 100) {
             filteredResults = filteredResults.slice(0, limit);
         }
@@ -343,9 +327,13 @@ document.addEventListener('DOMContentLoaded', () => {
     applyFiltersBtn.addEventListener('click', applyFiltersAndDisplay);
     
     // Appliquer les filtres automatiquement quand on change les sélections
-    document.getElementById('content-type-filter').addEventListener('change', applyFiltersAndDisplay);
-    document.getElementById('sort-filter').addEventListener('change', applyFiltersAndDisplay);
-    document.getElementById('results-limit').addEventListener('change', applyFiltersAndDisplay);
+    const contentTypeFilter = document.getElementById('content-type');
+    const timeFilter = document.getElementById('time-filter');
+    const resultsCount = document.getElementById('results-count');
+    
+    if (contentTypeFilter) contentTypeFilter.addEventListener('change', applyFiltersAndDisplay);
+    if (timeFilter) timeFilter.addEventListener('change', applyFiltersAndDisplay);
+    if (resultsCount) resultsCount.addEventListener('change', applyFiltersAndDisplay);
     
     // Fermer les suggestions en cliquant ailleurs
     document.addEventListener('click', (event) => {
