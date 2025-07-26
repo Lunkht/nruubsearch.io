@@ -1,0 +1,10 @@
+# Ignore backend files that are not needed for deployment
+backend/
+
+# Keep these files for deployment
+!api/
+!frontend/
+!assets/
+!index.html
+!vercel.json
+!requirements.txt

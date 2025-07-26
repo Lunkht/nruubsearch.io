@@ -1,0 +1,16 @@
+{
+  "name": "nruub-search",
+  "version": "1.0.0",
+  "description": "Moteur de recherche nruub",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required'",
+    "start": "echo 'Static site - no start command needed'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lunkht/nruubsearch.io.git"
+  },
+  "author": "Lunkht",
+  "license": "MIT"
+}
